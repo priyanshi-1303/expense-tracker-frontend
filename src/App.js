@@ -18,8 +18,8 @@ function App() {
   const [futurePrediction, setFuturePrediction] = useState(null);
   const [user, setUser] = useState(null);
 
-  // 🔹 Add your Render backend URL here
-  const BACKEND_URL = "https://expense-tracker-backend-q9it.onrender.com/"; // <-- replace with your actual URL
+  // 🔹 Backend URL (Render)
+  const BACKEND_URL = "https://expense-tracker-backend-q9it.onrender.com";
 
   // Firebase auth state change
   useEffect(() => {
@@ -39,7 +39,7 @@ function App() {
   const fetchExpenses = async () => {
     try {
       const res = await axios.get(`${BACKEND_URL}/api/expenses`, {
-        params: { userId: auth.currentUser.uid } // 🟢 send UID
+        params: { userId: auth.currentUser.uid } // 🟢 Pass UID
       });
       setExpenses(res.data);
     } catch (err) {
@@ -54,7 +54,7 @@ function App() {
         title,
         amount: Number(amount),
         category,
-        userId: auth.currentUser.uid // 🟢 save with UID
+        userId: auth.currentUser.uid // 🟢 Save with UID
       });
 
       // Call AI analyze endpoint
@@ -77,13 +77,21 @@ function App() {
   };
 
   const deleteExpense = async (id) => {
-    await axios.delete(`${BACKEND_URL}/api/expenses/${id}`);
-    fetchExpenses();
+    try {
+      await axios.delete(`${BACKEND_URL}/api/expenses/${id}`, {
+        params: { userId: auth.currentUser.uid } // 🟢 Ensure only their data deletes
+      });
+      fetchExpenses();
+    } catch (err) {
+      console.error("❌ Delete error:", err);
+    }
   };
 
   const getFuturePrediction = async () => {
     try {
-      const res = await axios.get(`${BACKEND_URL}/api/ai/predict_future`);
+      const res = await axios.get(`${BACKEND_URL}/api/ai/predict_future`, {
+        params: { userId: auth.currentUser.uid }
+      });
       setFuturePrediction(res.data.next_month_prediction);
     } catch (err) {
       console.error("❌ Prediction error", err);
