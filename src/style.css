@@ -1,0 +1,119 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121212; /* Black background */
+  color: #ffffff; /* White text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container */
+.app-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  color: #FFD600; /* Yellow */
+  margin-bottom: 20px;
+}
+
+/* Form */
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+form input,
+form select {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  flex: 1;
+  background: #2a2a2a;
+  color: white;
+}
+
+form button {
+  background: #FFD600;
+  color: black;
+  font-weight: bold;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #ffea55;
+}
+
+/* Expense list */
+ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+ul li {
+  background: #1e1e1e;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li p {
+  margin-bottom: 5px;
+}
+
+ul li button {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+ul li button:hover {
+  background: #ff6666;
+}
+
+/* Prediction Button */
+.predict-btn {
+  background: #FFD600;
+  color: black;
+  font-weight: bold;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.predict-btn:hover {
+  background: #ffea55;
+}
+
+/* Charts Section */
+.chart-section {
+  margin-top: 40px;
+  padding: 20px;
+  background: #111;
+  border-radius: 15px;
+}
